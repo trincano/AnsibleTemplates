@@ -67,4 +67,4 @@
         volumes:
           - presearch-node-storage:/app/node
         env:
-          - REGISTRATION_CODE: {{REG_CODE}}
+          REGISTRATION_CODE: {{REG_CODE}}
