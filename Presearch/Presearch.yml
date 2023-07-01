@@ -37,3 +37,33 @@
           - docker-scan-plugin
           - docker-compose-plugin
         update_cache: yes
+    - name: Stop Presearch Node Container
+      docker_container:
+        name: presearch-node
+        state: stopped
+    - name: Remove Presearch Node Container
+      docker_container:
+        name: presearch-node
+        state: absent
+    - name: Stop Presearch Node Updater Container
+      docker_container:
+        name: presearch-auto-updater
+        state: stopped        
+    - name: Remove Presearch Node Updater Container
+      docker_container:
+        name: presearch-auto-updater
+        state: absent        
+    - name: Create Presearch Node Updater Container
+      docker_container:
+        name: presearch-auto-updater
+        image: presearch/auto-updater
+        command: "--cleanup --interval 900 presearch-auto-updater presearch-node"
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock
+    - name: Create Presearch Node Container
+      docker_container:
+        name: presearch-node
+        image: presearch/node
+        volumes:
+          - presearch-node-storage:/app/node
+        
