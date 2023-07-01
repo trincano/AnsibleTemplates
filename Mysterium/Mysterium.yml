@@ -45,7 +45,7 @@
         volumes:
           - /var/run/docker.sock:/var/run/docker.sock
         env:
-          WATCHTOWER_POLL_INTERVAL: 259200
+          "WATCHTOWER_POLL_INTERVAL": "259200"
     - name: Create Myst Node Container
       docker_container:
         name: myst
