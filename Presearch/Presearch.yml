@@ -37,18 +37,10 @@
           - docker-scan-plugin
           - docker-compose-plugin
         update_cache: yes
-    - name: Stop Presearch Node Container
-      docker_container:
-        name: presearch-node
-        state: stopped
     - name: Remove Presearch Node Container
       docker_container:
         name: presearch-node
-        state: absent
-    - name: Stop Presearch Node Updater Container
-      docker_container:
-        name: presearch-auto-updater
-        state: stopped        
+        state: absent    
     - name: Remove Presearch Node Updater Container
       docker_container:
         name: presearch-auto-updater
