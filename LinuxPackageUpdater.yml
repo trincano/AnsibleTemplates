@@ -1,10 +1,11 @@
 ---
-- hosts: all
-
+- name: Update Ubuntu Servers - Starting deploy
+  hosts: all
   become: true
-
   tasks:
-    - name: APT Package Updater
-      apt:
-        upgrade: yes
+    - name: Ubuntu Like | Update System
+      ansible.builtin.apt:
+        name: "*"
+        state: latest
         update_cache: yes
+...
